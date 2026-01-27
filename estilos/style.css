@@ -7,6 +7,7 @@
   --destaque-inverso
   --fundo-card
 */
+
 *{
   margin: 0px;
   padding: 0px;
@@ -53,4 +54,50 @@ nav#menu a:hover{
   color: var(--destaque);
   border-radius: 5px;
   
+}
+main{
+display: grid;
+grid-template-columns: auto 90vw auto;
+}
+section#ficha{
+  background-color: var(--fundo-card);
+  padding: 10px;
+  border-radius: 5px;
+  grid-column: 2;
+  margin-top: 20px;
+}
+main section#ficha>img{
+  height: 200px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid var(--fundo-card);
+  outline: 5px solid var(--destaque);
+  display: block;
+  margin: auto;
+  margin-bottom: 15px;
+}
+section#ficha>h1{
+  color: var(--destaque);
+  margin: 15px 0px;
+  font-size: 1.5em;
+  text-align: center;
+}
+div#social{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8em;
+  gap: 1em;
+  margin: 10px;
+}
+div#social>a{
+  text-decoration: none;
+  color: var(--destaque);
+  transition: color .2s;
+}
+div#social>a:hover{
+  color: var(--destaque-inverso);
+  transform: translatey(-3px);
+
 }
