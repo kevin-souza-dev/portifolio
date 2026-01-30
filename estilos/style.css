@@ -167,6 +167,29 @@ article h2{
   border-radius: 4px;
 
 }
+.formacao-container{
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 15px;
+}
+.formacao-container .curso{
+background-color: var(--fundo-principal);
+border-radius: 8px;
+border-left: 5px solid var(--destaque-inverso);
+padding-left: 15px;
+
+}
+
+.formacao-container .curso:hover{
+  border-left-width: 15px;
+  cursor: pointer;
+  border-left: 10px solid var(--destaque);
+  transform: translateY(-1px);
+  transition: border-width 0.3s, transform .3s;
+  
+}
+
+
 
 @media screen and (min-width: 768px) {
   #skill-container{
