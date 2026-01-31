@@ -18,16 +18,17 @@
     <header>
         <nav id="menu">
             <ul>
-                <li><a href="#"><span class="material-symbols-outlined">home</span></a></li>
-                <li><a href="#"><span class="material-symbols-outlined">neurology</span></a></li>
-                <li><a href="#"> <span class="material-symbols-outlined">
+                <li><a href="#ficha" class="link"><span class="material-symbols-outlined">home</span></a></li>
+                <li><a href="#skill-container" class="link"><span class="material-symbols-outlined">neurology</span></a>
+                </li>
+                <li><a href="#formacao" class="link"> <span class="material-symbols-outlined">
                             school
                         </span> </a>
                 <li>
-                <li><a href="#"><span class="material-symbols-outlined">
+                <li><a href="#projetos" class="link"><span class="material-symbols-outlined">
                             content_paste
                         </span></a></li>
-                <li><a href="#"><span class="material-symbols-outlined">
+                <li><a href="#" id="botao-tema"><span class="material-symbols-outlined">
                             brightness_6
                         </span></a></li>
             </ul>
@@ -131,7 +132,7 @@
             </article>
 
             <article>
-                <h2> <span class="material-symbols-outlined">
+                <h2 id="formacao"> <span class="material-symbols-outlined">
                         school
                     </span> Formação</h2>
                 <div class="formacao-container">
@@ -156,9 +157,63 @@
                 </div>
             </article>
             <article>
-                <h2><span class="material-symbols-outlined">
+                <h2 id="projetos"><span class="material-symbols-outlined">
                         content_paste
-                    </span> Projetos</h2>
+                    </span> Projetos
+                </h2>
+                <div class="projeto-container">
+                    <div class="projeto">
+                        <img src="imagens/projeto-01-videos.jpg" alt="projeto 1" class="foto">
+                        <div class="projeto-info">
+                            <p class="periodo">2025</p>
+                            <h3 class="titulo">Projeto de vídeos</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolore. Et perspiciatis
+                                aut iusto quisquam mollitia quaerat commodi aliquam harum praesentium esse, perferendis
+                                deleniti dignissimos amet sed veritatis accusantium nemo!</p>
+                            <details>
+                                <summary>Saiba mais...</summary>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat modi enim corporis
+                                    at iusto voluptates molestiae voluptatem quo praesentium accusamus reiciendis et
+                                    aperiam, quam sint nobis, excepturi tempora eum? Iste.</p>
+                            </details>
+                        </div>
+                    </div>
+
+                    <div class="projeto">
+                        <img src="imagens/projeto-02-cordel.jpg" alt="projeto 2" class="foto">
+                        <div class="projeto-info">
+                            <p class="periodo">2025</p>
+                            <h3 class="titulo">Projeto cordel</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolore. Et perspiciatis
+                                aut iusto quisquam mollitia quaerat commodi aliquam harum praesentium esse, perferendis
+                                deleniti dignissimos amet sed veritatis accusantium nemo!</p>
+                            <details>
+                                <summary>Saiba mais...</summary>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat modi enim corporis
+                                    at iusto voluptates molestiae voluptatem quo praesentium accusamus reiciendis et
+                                    aperiam, quam sint nobis, excepturi tempora eum? Iste.</p>
+                            </details>
+                        </div>
+                    </div>
+
+                    <div class="projeto">
+                        <img src="imagens/projeto-03-android.jpg" alt="projeto 3" class="foto">
+                        <div class="projeto-info">
+                            <p class="periodo">2025</p>
+                            <h3 class="titulo">Projeto android</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolore. Et perspiciatis
+                                aut iusto quisquam mollitia quaerat commodi aliquam harum praesentium esse, perferendis
+                                deleniti dignissimos amet sed veritatis accusantium nemo!</p>
+                            <details>
+                                <summary>Saiba mais...</summary>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat modi enim corporis
+                                    at iusto voluptates molestiae voluptatem quo praesentium accusamus reiciendis et
+                                    aperiam, quam sint nobis, excepturi tempora eum? Iste.</p>
+                            </details>
+                        </div>
+                    </div>
+
+                </div>
             </article>
 
 
@@ -167,10 +222,49 @@
 
     </main>
 
-    <footer>
+    <script>
+        const botao = document.getElementById('botao-tema');
+        const body = document.body;
 
+        // Persistência do tema
+        const temasalvo = localStorage.getItem('tema');
+        temaEscuro(temasalvo === 'escuro');
 
-    </footer>
+        // Função para alternar entre tema claro e escuro
+        function temaEscuro(tipo) {
+            if (tipo == true) {
+                body.classList.add('escuro');
+                botao.innerHTML = '<span class="material-symbols-outlined">brightness_3</span>';
+            } else {
+                body.classList.remove('escuro');
+                botao.innerHTML = '<span class="material-symbols-outlined">brightness_6</span>';
+            }
+        }
+        
+
+        botao.addEventListener('click', () => {
+            const isescuro = body.classList.toggle('escuro');
+            temaEscuro(isescuro);
+            localStorage.setItem('tema', isescuro ? 'escuro' : 'claro');
+        });
+
+        // Scroll suave para links de navegação
+        const navLinks = document.querySelectorAll('#menu ul a.link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight - 30;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
